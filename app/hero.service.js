@@ -53,6 +53,13 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/toPromise'
                         .then(function (res) { return res.json().data; })
                         .catch(this.handleError);
                 };
+                HeroService.prototype.delete = function (id) {
+                    var url = this.heroesUrl + "/" + id;
+                    return this.http.delete(url, { headers: this.headers })
+                        .toPromise()
+                        .then(function () { return null; })
+                        .catch(this.handleError);
+                };
                 HeroService.prototype.handleError = function (error) {
                     console.error('An error occurred', error); // for demo purposes only
                     return Promise.reject(error.message || error);
