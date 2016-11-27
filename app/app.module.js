@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/platform-browser', '@angular/forms', './app.component', './dashboard.component', './hero-detail.component', './heroes.component', './hero.service', './app-routing.module'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/platform-browser', '@angular/forms', '@angular/http', './app-routing.module', 'angular-in-memory-web-api', './in-memory-data.service', './app.component', './dashboard.component', './hero-detail.component', './heroes.component', './hero.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/platform-browser', '@angular/forms',
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, platform_browser_1, forms_1, app_component_1, dashboard_component_1, hero_detail_component_1, heroes_component_1, hero_service_1, app_routing_module_1;
+    var core_1, platform_browser_1, forms_1, http_1, app_routing_module_1, angular_in_memory_web_api_1, in_memory_data_service_1, app_component_1, dashboard_component_1, hero_detail_component_1, heroes_component_1, hero_service_1;
     var AppModule;
     return {
         setters:[
@@ -22,6 +22,18 @@ System.register(['@angular/core', '@angular/platform-browser', '@angular/forms',
             },
             function (forms_1_1) {
                 forms_1 = forms_1_1;
+            },
+            function (http_1_1) {
+                http_1 = http_1_1;
+            },
+            function (app_routing_module_1_1) {
+                app_routing_module_1 = app_routing_module_1_1;
+            },
+            function (angular_in_memory_web_api_1_1) {
+                angular_in_memory_web_api_1 = angular_in_memory_web_api_1_1;
+            },
+            function (in_memory_data_service_1_1) {
+                in_memory_data_service_1 = in_memory_data_service_1_1;
             },
             function (app_component_1_1) {
                 app_component_1 = app_component_1_1;
@@ -37,9 +49,6 @@ System.register(['@angular/core', '@angular/platform-browser', '@angular/forms',
             },
             function (hero_service_1_1) {
                 hero_service_1 = hero_service_1_1;
-            },
-            function (app_routing_module_1_1) {
-                app_routing_module_1 = app_routing_module_1_1;
             }],
         execute: function() {
             AppModule = (function () {
@@ -50,6 +59,8 @@ System.register(['@angular/core', '@angular/platform-browser', '@angular/forms',
                         imports: [
                             platform_browser_1.BrowserModule,
                             forms_1.FormsModule,
+                            http_1.HttpModule,
+                            angular_in_memory_web_api_1.InMemoryWebApiModule.forRoot(in_memory_data_service_1.InMemoryDataService),
                             app_routing_module_1.AppRoutingModule
                         ],
                         declarations: [
