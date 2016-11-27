@@ -46,6 +46,13 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/toPromise'
                         .then(function () { return hero; })
                         .catch(this.handleError);
                 };
+                HeroService.prototype.create = function (name) {
+                    return this.http
+                        .post(this.heroesUrl, JSON.stringify({ name: name }), { headers: this.headers })
+                        .toPromise()
+                        .then(function (res) { return res.json().data; })
+                        .catch(this.handleError);
+                };
                 HeroService.prototype.handleError = function (error) {
                     console.error('An error occurred', error); // for demo purposes only
                     return Promise.reject(error.message || error);
