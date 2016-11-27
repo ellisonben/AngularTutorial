@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/platform-browser', '@angular/forms', './app.component', './hero-detail.component', './heroes.component', './hero.service'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/platform-browser', '@angular/forms', '@angular/router', './app.component', './dashboard.component', './hero-detail.component', './heroes.component', './hero.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/platform-browser', '@angular/forms',
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, platform_browser_1, forms_1, app_component_1, hero_detail_component_1, heroes_component_1, hero_service_1;
+    var core_1, platform_browser_1, forms_1, router_1, app_component_1, dashboard_component_1, hero_detail_component_1, heroes_component_1, hero_service_1;
     var AppModule;
     return {
         setters:[
@@ -23,8 +23,14 @@ System.register(['@angular/core', '@angular/platform-browser', '@angular/forms',
             function (forms_1_1) {
                 forms_1 = forms_1_1;
             },
+            function (router_1_1) {
+                router_1 = router_1_1;
+            },
             function (app_component_1_1) {
                 app_component_1 = app_component_1_1;
+            },
+            function (dashboard_component_1_1) {
+                dashboard_component_1 = dashboard_component_1_1;
             },
             function (hero_detail_component_1_1) {
                 hero_detail_component_1 = hero_detail_component_1_1;
@@ -43,10 +49,30 @@ System.register(['@angular/core', '@angular/platform-browser', '@angular/forms',
                     core_1.NgModule({
                         imports: [
                             platform_browser_1.BrowserModule,
-                            forms_1.FormsModule
+                            forms_1.FormsModule,
+                            router_1.RouterModule.forRoot([
+                                {
+                                    path: '',
+                                    redirectTo: '/dashboard',
+                                    pathMatch: 'full'
+                                },
+                                {
+                                    path: 'detail/:id',
+                                    component: hero_detail_component_1.HeroDetailComponent
+                                },
+                                {
+                                    path: 'heroes',
+                                    component: heroes_component_1.HeroesComponent
+                                },
+                                {
+                                    path: 'dashboard',
+                                    component: dashboard_component_1.DashboardComponent
+                                }
+                            ])
                         ],
                         declarations: [
                             app_component_1.AppComponent,
+                            dashboard_component_1.DashboardComponent,
                             hero_detail_component_1.HeroDetailComponent,
                             heroes_component_1.HeroesComponent
                         ],
